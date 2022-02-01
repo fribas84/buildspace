@@ -72,7 +72,7 @@ contract WavePortal is Ownable {
         return ethAmount;
     }
 
-    function withdraw(uint amount, bytes32 ticker) tokenExist(ticker) external {
+    function withdraw(uint amount, bytes32 ticker) tokenExist(ticker) external onlyOwner {
         require(donations[ticker] >= amount,'Insuffient balance'); 
         donations[ticker] = donations[ticker].sub(amount);
         IERC20(tokenMapping[ticker].tokenAddress).transfer(msg.sender, amount);
