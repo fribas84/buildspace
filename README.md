@@ -1,15 +1,9 @@
-# Basic Sample Hardhat Project
+# Buildpace Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+This project is an extesion of Builspace training with some custom features.
+It behaves as a wallet where it can receive Eth or any token and only the owner can withdraw it.
 
-Try running some of the following tasks:
+The objective is to fund my upraising web3 developer carreer.
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+
+
