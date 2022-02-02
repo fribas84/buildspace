@@ -3,9 +3,9 @@
 pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
-import '../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol';
-import '../node_modules/@openzeppelin/contracts/access/Ownable.sol';
-import '../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol';
+import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
+import '@openzeppelin/contracts/access/Ownable.sol';
+import '@openzeppelin/contracts/utils/math/SafeMath.sol';
 
 
 contract WavePortal is Ownable {
@@ -49,7 +49,12 @@ contract WavePortal is Ownable {
     function addToken(bytes32 ticker,address tokenAddress) external {
         tokenMapping[ticker] = Token(ticker, tokenAddress);
         tokenList.push(ticker);
-       //console.log("Token added => Ticker: %s Address: %s", ticker, tokenAddress);
+        console.log("Token added =>Address: %s",tokenAddress);
+        console.logBytes32(ticker);
+
+        
+
+
     }
 
     modifier tokenExist(bytes32 ticker) {
@@ -57,9 +62,10 @@ contract WavePortal is Ownable {
         _;
     }
 
-    function deposit(uint amount,  bytes32 ticker) tokenExist(ticker) external {
+    function deposit(uint amount, bytes32 ticker) tokenExist(ticker) external {
         IERC20(tokenMapping[ticker].tokenAddress).transferFrom(msg.sender, address(this), amount);
         donations[ticker] = donations[ticker].add(amount);
+    
     }
 
     function withdrawEth(uint amount) external onlyOwner {
